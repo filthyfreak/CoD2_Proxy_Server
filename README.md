@@ -1,4 +1,4 @@
-# CoD2_Proxy_Server
+# CoD2 Proxy Server
 A proxy server for Call of Duty 2 written in C. Intended to work in conjunction with the '[CoD2rev_Server](https://github.com/voron00/CoD2rev_Server)' project.
 
 [CoD2rev_Server](https://github.com/voron00/CoD2rev_Server) enables you to run a 1.0 server that accepts clients from all versions.
