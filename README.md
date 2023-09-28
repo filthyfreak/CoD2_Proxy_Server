@@ -3,6 +3,12 @@ A proxy server for Call of Duty 2 written in C. Designed to work in conjunction 
 
 Compile command: gcc -o cod2proxy_lnxded cod2proxy_lnxded.c
 
+Usage: cod2proxy_lnxded <FORWARD_TO> <LISTEN_ON> <SHORTVERSION> <FS_GAME> <BLOCKIPS(BOOL)>
+
+Example: cod2proxy_lnxded 28960 28990 1.3 kingbot 0
+
+Note: Set '<BLOCKIPS(BOOL)>' to 1 if you don't want your server to appear in common trackers such as tracker.killtube.org or gametracker.
+
 Credits: Voron for the rate limiter code.
 
 Copyright (c) 2023, king-clan.com
