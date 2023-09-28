@@ -7,7 +7,7 @@ Usage: ```cod2proxy_lnxded <FORWARD_TO> <LISTEN_ON> <SHORTVERSION> <FS_GAME> <BL
 
 Example: ```cod2proxy_lnxded 28960 28990 1.3 kingbot 0```
 
-Note 1: Set '<BLOCKIPS(BOOL)>' to 1 if you don't want your server to appear in common trackers such as tracker.killtube.org or gametracker. This will prevent the same server appearing two/three times in the tracker lists.
+Note 1: Set '<BLOCKIPS(BOOL)>' to 1 if you don't want your server to appear in common trackers such as tracker.killtube.org or gametracker. This will prevent server from duplicating itself two/three times in those tracker lists.
 
 Note 2: You probably need to set your net_ip to 0.0.0.0 or it won't work.
 
