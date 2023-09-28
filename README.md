@@ -23,7 +23,7 @@ Note 2: It is very likely you will need to set your net_ip to 0.0.0.0 or it won'
 \
 \
 \
-Credits: [Libcod](https://github.com/kungfooman/libcod)/ for the rate limit code.
+Credits: [Libcod](https://github.com/kungfooman/libcod) for the rate limit code.
 \
 \
 \
