@@ -13,13 +13,13 @@ Compile: ```gcc -o cod2proxy_lnxded cod2proxy_lnxded.c```
 
 Usage: ```cod2proxy_lnxded <FORWARD_TO> <LISTEN_ON> <SHORTVERSION> <FS_GAME> <BLOCKIPS(BOOL)>```
 
-Example: ```cod2proxy_lnxded 28960 28990 1.3 kingbot 0```
+Example: ```cod2proxy_lnxded 28960 28990 1.3 kingbot 1```
 \
 \
 \
-Note 1: Set '<BLOCKIPS(BOOL)>' to 1 if you don't want your server to appear in common trackers such as tracker.killtube.org or gametracker. This will prevent server from duplicating itself two/three times in those tracker lists.
+Note 1: Set '<BLOCKIPS(BOOL)>' to 1 if you don't want your server to appear in common trackers such as tracker.killtube.org or gametracker. This will prevent your server from being duplicated two/three times on those tracker lists.
 
-Note 2: You probably need to set your net_ip to 0.0.0.0 or it won't work.
+Note 2: It is very likely you will need to set your net_ip to 0.0.0.0 or it won't work.
 \
 \
 \
