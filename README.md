@@ -23,8 +23,10 @@ Note 2: It is very likely you will need to set your net_ip to 0.0.0.0 or it won'
 \
 \
 \
-Credits: Voron for the rate limiter code.
-
+Credits: [Libcod](https://github.com/kungfooman/libcod)/ for the rate limit code.
+\
+\
+\
 Copyright (c) 2023, king-clan.com
 All rights reserved.
 
