@@ -1,7 +1,7 @@
 # CoD2_Proxy_Server
 A proxy server for Call of Duty 2 written in C. Designed to work in conjunction with the 'CoD2rev_Server' project.
 
-```Compile command: gcc -o cod2proxy_lnxded cod2proxy_lnxded.c```
+Compile: ```gcc -o cod2proxy_lnxded cod2proxy_lnxded.c```
 
 Usage: ```cod2proxy_lnxded <FORWARD_TO> <LISTEN_ON> <SHORTVERSION> <FS_GAME> <BLOCKIPS(BOOL)>```
 
