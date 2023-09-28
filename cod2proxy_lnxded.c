@@ -534,11 +534,11 @@ int main(int argc, char *argv[])
 				}
 			}
 
-			if(is_blocked)
-			{
-				strcpy(buffer, "\xFF\xFF\xFF\xFFgetstatusproxy");
-				bytes_received = bytes_received + 5;
-			}
+			//if(is_blocked)
+			//{
+			//	strcpy(buffer, "\xFF\xFF\xFF\xFFgetstatusproxy");
+			//	bytes_received = bytes_received + 5;
+			//}
 		}
 		else if(memcmp(lowerCaseBuffer, "\xff\xff\xff\xff""connect", 11) == 0)
 		{
