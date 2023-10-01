@@ -21,11 +21,11 @@ Note 1: Set '<BLOCKIPS(BOOL)>' to 1 if you don't want your server to appear in c
 
 Note 2: It is very likely you will need to set your net_ip to 0.0.0.0 or it won't work.
 
-Note 3: Using this will cause the player's IP address to appear as '127.0.0.1' when using getIP(). To fix this, you can utilize 'Info_ValueForKey(userinfo, "ip")' to get their real IP address. For example, edit 'ClientConnect' inside [g_client_mp.cpp](https://github.com/voron00/CoD2rev_Server/blob/master/src/game/g_client_mp.cpp) to [look like this](https://pastebin.com/mRWbrgi2) and edit 'gsc_player_getip' inside [gsc_player.cpp](https://github.com/voron00/CoD2rev_Server/blob/master/src/libcod/gsc_player.cpp) to [look like this](https://pastebin.com/hqmD1cxw).
+Note 3: This will cause the player's IP address to return '127.0.0.1' when using getIP(). To fix this, you can utilize 'Info_ValueForKey(userinfo, "ip")' to get their real IP address. For example, edit 'ClientConnect' inside [g_client_mp.cpp](https://github.com/voron00/CoD2rev_Server/blob/master/src/game/g_client_mp.cpp) to [look like this](https://pastebin.com/mRWbrgi2) and edit 'gsc_player_getip' inside [gsc_player.cpp](https://github.com/voron00/CoD2rev_Server/blob/master/src/libcod/gsc_player.cpp) to [look like this](https://pastebin.com/hqmD1cxw).
 \
 \
 \
-Credits: [Libcod](https://github.com/kungfooman/libcod) for the rate limit code.
+Credits: [Libcod](https://github.com/kungfooman/libcod) for the rate limiter code.
 \
 \
 \
