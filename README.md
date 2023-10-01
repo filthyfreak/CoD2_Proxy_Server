@@ -11,9 +11,9 @@ The end result is a server that appears to be on 1.2/1.3 but is actually just a 
 \
 Compile: ```gcc -o cod2proxy_lnxded cod2proxy_lnxded.c```
 
-Usage: ```cod2proxy_lnxded <FORWARD_TO> <LISTEN_ON> <SHORTVERSION> <FS_GAME> <BLOCKIPS(BOOL)>```
+Usage: ```./cod2proxy_lnxded <FORWARD_TO> <LISTEN_ON> <SHORTVERSION> <FS_GAME> <BLOCKIPS(BOOL)>```
 
-Example: ```cod2proxy_lnxded 28960 28990 1.3 kingbot 1```
+Example: ```./cod2proxy_lnxded 28960 28990 1.3 kingbot 1```
 \
 \
 \
