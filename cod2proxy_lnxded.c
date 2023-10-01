@@ -349,7 +349,7 @@ void *listen_thread(void *arg)
 						if(shortversion != NULL)
 							memcpy(shortversion, "\\shortversion\\1.2", 17);
 					}
-					else
+					else if(strcmp(SHORTVERSION, "1.3") == 0)
 					{
 						char *protocol = strstr(buffer, "\\protocol\\115");
 						if(protocol != NULL)
@@ -368,7 +368,7 @@ void *listen_thread(void *arg)
 						if(protocol != NULL)
 							memcpy(protocol, "\\protocol\\117", 13);
 					}
-					else
+					else if(strcmp(SHORTVERSION, "1.3") == 0)
 					{
 						char *protocol = strstr(buffer, "\\protocol\\115");
 						if(protocol != NULL)
