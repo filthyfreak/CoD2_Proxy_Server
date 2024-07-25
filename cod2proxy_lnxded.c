@@ -20,6 +20,7 @@
 
 char HEARTBEAT_MESSAGE[] = "\xFF\xFF\xFF\xFFheartbeat COD-2";
 char AUTHORIZE_MESSAGE[] = "\xFF\xFF\xFF\xFFgetIpAuthorize";
+char DISCONNECT_MESSAGE[] = "\xFF\xFF\xFF\xFF""error\nEXE_DISCONNECTED_FROM_SERVER";
 char SHORTVERSION[4];
 char FORWARD_IP[] = "127.0.0.1";
 char FS_GAME[32];
@@ -121,6 +122,116 @@ uint64_t Sys_Milliseconds64(void)
 	}
 
 	return (tp.tv_sec - sys_timeBase64) * 1000 + tp.tv_usec / 1000;
+}
+
+int I_isupper( int c )
+{
+	if (c >= 'A' && c <= 'Z')
+		return ( 1 );
+	return ( 0 );
+}
+
+int I_strnicmp(const char *s0, const char *s1, int n)
+{
+	int c1;
+	int c0;
+
+	if (!s0 || !s1)
+	{
+		return s1 - s0;
+	}
+
+	do
+	{
+		c0 = *s0++;
+		c1 = *s1++;
+
+		if (!n--)
+		{
+			return 0;       // strings are equal until end point
+		}
+
+		if (c0 != c1)
+		{
+			if (I_isupper(c0))
+			{
+				c0 += 32;
+			}
+			if (I_isupper(c1))
+			{
+				c1 += 32;
+			}
+			if (c0 != c1)
+			{
+				return c0 < c1 ? -1 : 1;
+			}
+		}
+	}
+	while (c0);
+
+	return 0;
+}
+
+int I_stricmp(const char *s0, const char *s1)
+{
+	return I_strnicmp(s0, s1, 0x7FFFFFFF);
+}
+
+const char * InfoValueForKey(const char *s, const char *key)
+{
+	char pkey[8192];
+	static char value[2][8192]; // Use two buffers so that
+	// comparisons that call the function twice work without stomping on each
+	// other's buffers
+	static int valueindex = 0;
+	char *o;
+
+	if ( !s || !key )
+	{
+		return "";
+	}
+
+	if ( strlen( s ) >= 8192 )
+	{
+		printf("Warning: InfoValueForKey: oversize infostring\n");
+		return "";
+	}
+
+	while ( *s && *s != '\\' )
+		s++;
+
+	if ( *s == '\\' )
+		s++;
+
+	while ( 1 )
+	{
+		o = pkey;
+		while ( *s != '\\' )
+		{
+			if ( !*s )
+				return "";
+			*o++ = *s++;
+		}
+		*o = 0;
+		s++;
+
+		o = value[valueindex];
+
+		while ( *s != '\\' && *s )
+		{
+			*o++ = *s++;
+		}
+		*o = 0;
+
+		if ( !I_stricmp(key, pkey) )
+			return value[valueindex];
+
+		if ( !*s )
+			break;
+		s++;
+	}
+
+	return "";
 }
 
 // ioquake3 rate limit connectionless requests
@@ -542,6 +653,16 @@ int main(int argc, char *argv[])
 		}
 		else if(memcmp(lowerCaseBuffer, "\xff\xff\xff\xff""connect", 11) == 0)
 		{
+			// Prevent IP spoofing via userinfo IP client dvar
+			if ( strlen(InfoValueForKey(lowerCaseBuffer + 11, "ip")) )
+			{
+				printf("Potential IP spoofing attempt from %s\n", inet_ntoa(addr.sin_addr));
+
+				// Cause disconnect on the client side
+				sendto(sock, DISCONNECT_MESSAGE, sizeof(DISCONNECT_MESSAGE), 0, (struct sockaddr *)&addr, sizeof(addr));
+				continue;
+			}
+
 			size_t current_len = strlen(buffer);
 			char ip_insertion[] = "\\ip\\";
 
